@@ -1,19 +1,34 @@
 // use the coin geko api and make the request fot the7 7 most searched on coingeko
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Fetch = () => {
   const [coins, setCoins] = useState(null);
-  fetch('https://api.coingecko.com/api/v3/search/trending')
-    .then((res) => res.json())
-    .then((data) => {
-      setCoins(data.coins);
-    });
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    fetch('https://api.coingecko.com/api/v3/search/trending')
+      .then((res) => res.json())
+      .then((data) => {
+        setCoins(data.coins);
+        setIsLoading(false);
+      })
+      .catch((err) => { console.log(err); });
+  }, []);
+  console.log(coins);
+  const Trending = () => (
+    <ul className="trendinglist">
+      {coins.map(((item) => (
+        <li>
+          <img src={item.item.thumb} alt="coin thumbnail" />
+          {item.item.name}
+        </li>
+      )))}
+    </ul>
+  );
 
   return (
     <div>
-      {coins.map((item) => {
-        <h1>{item.name}</h1>;
-      })}
+      {isLoading ? <div>loading...</div> : <Trending />}
+
     </div>
   );
 };
