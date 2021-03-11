@@ -14,13 +14,28 @@ const Fetch = () => {
       .catch((err) => { console.log(err); });
   }, []);
   console.log(coins);
+
+  // temp li component to test onclick
+  const Licomp = ({ item }) => {
+    const handleClick = () => {
+      console.log(`${item.name}has been clicked`);
+    };
+    return (
+      <li onClick={handleClick}>
+        <img src={item.thumb} alt="coin thumbnail" />
+        {item.name}
+      </li>
+    );
+  };
+  // end of li component
   const Trending = () => (
     <ul className="trendinglist">
       {coins.map(((item) => (
-        <li>
-          <img src={item.item.thumb} alt="coin thumbnail" />
-          {item.item.name}
-        </li>
+        <Licomp key={item.item.symbol} item={item.item} />
+        // <li>
+        //   <img src={item.item.thumb} alt="coin thumbnail" />
+        //   {item.item.name}
+        // </li>
       )))}
     </ul>
   );
