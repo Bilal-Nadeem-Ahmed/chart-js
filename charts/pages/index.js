@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { Bar } from 'react-chartjs-2';
 import styles from '../styles/Home.module.css';
-import Fetch from '../components/fetch';
+
+import Trending from '../components/trending';
 
 export default function Home() {
   const data = {
@@ -44,7 +45,7 @@ export default function Home() {
             maintainAspectRatio: true,
           }}
         />
-        <Fetch />
+        <Trending />
       </main>
 
       <footer className={styles.footer}>
