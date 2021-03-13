@@ -29,12 +29,12 @@ const TrendingChart = ({ idToFetch }) => {
     // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
       label: idToFetch,
-      data: [chartData],
+      data: chartData,
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       borderColor: 'rgba(255, 99, 132, 1)',
       
       
-      borderWidth: 2,
+      borderWidth: 1,
     }],
   }
   const options ={   options: {
