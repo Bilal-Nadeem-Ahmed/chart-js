@@ -26,15 +26,15 @@ const TrendingChart = ({ idToFetch }) => {
       .catch((err) => console.log(err));
   }, [idToFetch]);
   const data = {
-    // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    
     datasets: [{
       label: idToFetch,
       data: chartData,
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: '#565656',
+      borderColor: 'gold',
       
       
-      borderWidth: 1,
+      borderWidth: 2,
     }],
   }
   const options ={   options: {
@@ -48,7 +48,7 @@ const TrendingChart = ({ idToFetch }) => {
     animation:{
       duration:2000
     },
-    maintainApectRatio:true,
+    maintainAspectRatio:false,
     responsive:true,
    scales: {
        xAxes: [{
@@ -62,15 +62,14 @@ const TrendingChart = ({ idToFetch }) => {
   
   return (
     <>
+   
+    <div className='graphcontainer'>
     <Line
      data={data}
-     width={250}
-     height={250}
+     width={600}
+     height={600}
      options={options.options}
     />
-    <div>
-      This is the trending chart
-      {idToFetch}
     </div>
     </>
   );

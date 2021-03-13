@@ -26,7 +26,7 @@ const Trending = () => {
     return (
       <li onClick={handleClick}>
         <img src={item.thumb} alt="coin thumbnail" />
-        {item.name}
+         {item.name}
       </li>
     );
   };

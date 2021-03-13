@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    background-color: black;
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+.trendinglist{
+    list-style-type: none;
+}
+.trendinglist img{
+    margin-right: 20px;
+}
+.trendinglist li{
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid grey;
+    width: 30vw;
+}
+
+.graphcontainer{
+    display: flex;
+    min-width: 80vw;
+
+}
