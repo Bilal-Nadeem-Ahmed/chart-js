@@ -30,6 +30,7 @@ const Trending = () => {
       </li>
     );
   };
+  console.log(coins)
   // end of li component
   const Trending = () => (
     <ul className="trendinglist">
@@ -44,6 +45,7 @@ const Trending = () => {
     <div>
       {isLoading ? <div>loading...</div> : <Trending />}
       {selectedCoin ? <TrendingChart idToFetch={selectedCoin} /> : null}
+      
     </div>
   );
 };
