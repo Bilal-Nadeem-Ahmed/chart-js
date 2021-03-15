@@ -21,12 +21,18 @@ body{
     margin: 5px;
     padding: 5px;
     border: 1px solid grey;
-    width: 30vw;
+    width: 20vw;
+    height: 20px;
+    
     
 }
 
 .graphcontainer{
     display: flex;
-    min-width: 80vw;
+    min-width: 70vw;
+
+}
+a{
+    color:#1EB33E;
 
 }

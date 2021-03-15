@@ -19,7 +19,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        This is the footer
+        <p>Powered by <a href='https://www.coingecko.com/en'>CoinGecko</a></p>
       </footer>
     </div>
   );

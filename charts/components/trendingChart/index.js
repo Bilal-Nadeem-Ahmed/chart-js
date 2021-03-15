@@ -1,30 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2'
 
-const TrendingChart = ({ idToFetch }) => {
-  const [chartData,setChartData]= useState(null);
-  // format the data 
-  const formatData = data=>{
-    return data.map((item)=>{
-     return {
-        t:item[0],
-        y:item[1].toFixed(4)
-      }
-    })
-  }
-
-  
-
-
-  useEffect(() => {
-    fetch(`https://api.coingecko.com/api/v3/coins/${idToFetch}/market_chart?vs_currency=gbp&days=1&interval=hourly
-    `)
-      .then((res) => res.json())
-      .then((data) => {
-        setChartData(formatData(data.prices));
-      })
-      .catch((err) => console.log(err));
-  }, [idToFetch]);
+const TrendingChart = ({ currentPrice, chartData,idToFetch ,name}) => {
+ 
   const data = {
     
     datasets: [{
@@ -53,8 +31,12 @@ const TrendingChart = ({ idToFetch }) => {
    scales: {
        xAxes: [{
            type: 'time',
-           distribution: 'linear'
-       }]
+           distribution: 'linear',
+           scaleLabel: {
+            display: true,
+            labelString: 'Time 24hr'}
+       }],
+   
    }
 }}
 
@@ -62,8 +44,10 @@ const TrendingChart = ({ idToFetch }) => {
   
   return (
     <>
-   
+   <p>{name} </p>
+   <p>Current Value: £{currentPrice}</p>
     <div className='graphcontainer'>
+      
     <Line
      data={data}
      width={600}

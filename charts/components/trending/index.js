@@ -7,6 +7,8 @@ const Trending = () => {
   const [coins, setCoins] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCoin, SetSelectedCoin] = useState(null);
+  const [selectedCoinName,SetSelectedCoinName]=useState(null);
+  const [selectedCoinPrice, SetSelectedCoinPrice] = useState(null);
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/search/trending')
       .then((res) => res.json())
@@ -22,6 +24,9 @@ const Trending = () => {
   const Licomp = ({ item }) => {
     const handleClick = () => {
       SetSelectedCoin(item.id);
+      SetSelectedCoinName(`Coin Name : ${item.name}`)
+      
+     
     };
     return (
       <li onClick={handleClick}>
@@ -52,13 +57,15 @@ const Trending = () => {
       .then((res) => res.json())
       .then((data) => {
         setChartData(formatData(data.prices));
+        SetSelectedCoinPrice(data.prices[data.prices.length-1][1].toFixed(2));
       })
       .catch((err) => console.log(err));
-  }, []);
+    },500)
+  }, [selectedCoin]);
  
 
 
-   },500)
+ 
    
 
   // end of li component
@@ -73,8 +80,9 @@ const Trending = () => {
 
   return (
     <div>
+      <h1>Trending Coins</h1>
       {isLoading ? <div>loading...</div> : <Trending />}
-      {selectedCoin ? <TrendingChart chartData ={chartData}idToFetch={selectedCoin} /> : null}
+      {selectedCoin ? <TrendingChart name={selectedCoinName} currentPrice={selectedCoinPrice} chartData ={chartData}idToFetch={selectedCoin} /> : null}
       
     </div>
   );
