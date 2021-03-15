@@ -30,7 +30,37 @@ const Trending = () => {
       </li>
     );
   };
-  console.log(coins)
+ //fetch for chart data 
+
+ const [chartData,setChartData]= useState(null);
+ //format the data 
+ const formatData = data=>{
+   return data.map((item)=>{
+    return {
+       t:item[0],
+       y:item[1].toFixed(4)
+     }
+   })
+ }
+
+
+ useEffect(() => {
+   setTimeout(()=>{
+
+    fetch(`https://api.coingecko.com/api/v3/coins/${selectedCoin}/market_chart?vs_currency=gbp&days=1&interval=hourly
+    `)
+      .then((res) => res.json())
+      .then((data) => {
+        setChartData(formatData(data.prices));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+ 
+
+
+   },500)
+   
+
   // end of li component
   const Trending = () => (
     <ul className="trendinglist">
@@ -44,7 +74,7 @@ const Trending = () => {
   return (
     <div>
       {isLoading ? <div>loading...</div> : <Trending />}
-      {selectedCoin ? <TrendingChart idToFetch={selectedCoin} /> : null}
+      {selectedCoin ? <TrendingChart chartData ={chartData}idToFetch={selectedCoin} /> : null}
       
     </div>
   );

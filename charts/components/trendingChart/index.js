@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2'
 
 const TrendingChart = ({ idToFetch }) => {
   const [chartData,setChartData]= useState(null);
-  //format the data 
+  // format the data 
   const formatData = data=>{
     return data.map((item)=>{
      return {
