@@ -1,17 +1,15 @@
 body{
     margin: 0;
     background-color: black;
-    color: blanchedalmond;
+    color: grey;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 100%;
 
 
 }
-.trendinglist{
-    list-style-type: none;
-}
+
 .trendinglist img{
     margin-right: 20px;
 }
@@ -19,6 +17,8 @@ body{
     display: flex;
     align-items: center;
     margin: 5px;
+    list-style-type: none;
+
     padding: 5px;
     border: 1px solid grey;
     width: 20vw;
@@ -26,13 +26,53 @@ body{
     
     
 }
+.trendinglist li:hover{
+    background-color: #56565670;
+    color: gold;
+    transition: 1s;
+}
+.trendinglist {
+    margin: 0 ;
+    padding: 0;
+}
+
 
 .graphcontainer{
     display: flex;
-    min-width: 70vw;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: auto;
+    /* margin: 5%; */
 
 }
 a{
     color:#1EB33E;
+
+}
+h1{
+    text-align: center;
+    color: gold;
+}
+.gold{
+    color: gold;
+}
+
+@media screen and (max-width:768px){
+    .trendinglist li{
+       width: 80vw;
+       justify-content: start;
+       align-items: center;
+       
+        
+        
+    }
+    .trendinglist ul{
+        max-width: 90%;
+    }
+    main{
+        margin: 5%;
+    
+    }
 
 }

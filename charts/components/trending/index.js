@@ -24,7 +24,7 @@ const Trending = () => {
   const Licomp = ({ item }) => {
     const handleClick = () => {
       SetSelectedCoin(item.id);
-      SetSelectedCoinName(`Coin Name : ${item.name}`)
+      SetSelectedCoinName(item.name)
       
      
     };
@@ -80,7 +80,7 @@ const Trending = () => {
 
   return (
     <div>
-      <h1>Trending Coins</h1>
+      <h2>Trending Coins</h2>
       {isLoading ? <div>loading...</div> : <Trending />}
       {selectedCoin ? <TrendingChart name={selectedCoinName} currentPrice={selectedCoinPrice} chartData ={chartData}idToFetch={selectedCoin} /> : null}
       

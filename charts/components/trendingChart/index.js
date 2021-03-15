@@ -8,11 +8,11 @@ const TrendingChart = ({ currentPrice, chartData,idToFetch ,name}) => {
     datasets: [{
       label: idToFetch,
       data: chartData,
-      backgroundColor: '#565656',
+      backgroundColor: '#56565670',
       borderColor: 'gold',
       
       
-      borderWidth: 2,
+      borderWidth: 1.5,
     }],
   }
   const options ={   options: {
@@ -44,14 +44,14 @@ const TrendingChart = ({ currentPrice, chartData,idToFetch ,name}) => {
   
   return (
     <>
-   <p>{name} </p>
-   <p>Current Value: £{currentPrice}</p>
+   <p>Coin Name: <span className='gold'>{name}</span> </p>
+   <p>Current Value: <span className='gold'>£ {currentPrice}</span></p>
     <div className='graphcontainer'>
       
     <Line
      data={data}
-     width={600}
-     height={600}
+     width={400}
+     height={400}
      options={options.options}
     />
     </div>
